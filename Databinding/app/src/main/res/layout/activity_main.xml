@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+    <import type="android.graphics.Color"/>
+    <import type="android.view.View"/>
+    <variable
+        name="viewModel"
+        type="realine.net.databinding.ViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text='@{viewModel.userName + " is "}'
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:background="@{viewModel.userYoung? Color.GREEN : Color.RED}"
+                android:text='@{String.valueOf(viewModel.userAge) + " years old"}'
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="40sp"
+            android:text='@{viewModel.userName + " is young!"}'
+            android:visibility="@{viewModel.userYoung ? View.VISIBLE : View.INVISIBLE}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@android:color/holo_blue_light"
+            android:textSize="40sp"
+            android:text="Update age"
+            android:onClick="@{viewModel.onUpdateUI}"
+            />
+
+    </LinearLayout>
+</layout>
